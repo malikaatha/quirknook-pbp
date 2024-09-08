@@ -18,7 +18,7 @@ class mainTest(TestCase):
         response = Client().get('/skibidi/')
         self.assertEqual(response.status_code, 404)
 
-    def test_strong_mood_user(self):
+    def test_product_expensive_user(self):
         now = timezone.now()
         prod = Product.objects.create(
             name = "LABUBU",
