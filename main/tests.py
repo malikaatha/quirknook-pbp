@@ -19,7 +19,6 @@ class mainTest(TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_product_expensive_user(self):
-        now = timezone.now()
         prod = Product.objects.create(
             name = "LABUBU",
             price = 600000,
