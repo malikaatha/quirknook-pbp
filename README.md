@@ -42,9 +42,14 @@ PBP A <br />
 
 
 ## Bagan Request Client Django
+![alt text](image.png)
 
 ## Fungsi git dalam pengembangan perangkat lunak!
+Git memungkinkan pengembang perangkat lunak untuk melacak setiap perubahan yang dilakukan pada kode sumber proyek secara detail, termasuk siapa yang membuat perubahan maupun kapan perubahan itu dilakukan. Dengan Git, pengembang dapat dengan mudah kembali ke versi sebelumnya jika terjadi kesalahan, menggabungkan perubahan dari beberapa pengembang, dan bekerja secara kolaboratif dalam tim. Selain itu, Git juga menyediakan fitur-fitur seperti _branching_, _merging_, dan _pull request_ yang sangat berguna untuk mengelola proyek yang kompleks.
 
 ## Mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
+Django sering digunakan sebagai permulaan dalam pembelajaran pengembangan perangkat lunak karena mengadopsi arsitektur Model-Template-View (MTV) yang memisahkan logika bisnis, presentasi, dan data, sehingga memudahkan pemahaman konsep dasar pengembangan web. Arsitektur ini membantu pemula memahami bagaimana komponen-komponen aplikasi berinteraksi. Selain itu, Django menyediakan banyak alat bawaan (template) yang memungkinkan pemula yang sedang belajar untuk fokus pada pembelajaran struktur dan alur kerja pengembangan tanpa harus membuat semuanya dari awal.
+
 
 ## Mengapa model pada Django disebut sebagai ORM?
+Model pada Django disebut ORM (Object-Relational Mapper) karena ORM merupakan fitur yang memungkinkan developer untuk berinteraksi dengan database secara intuitif menggunakan sintaks Python. Dengan ORM, user dapat memetakan struktur database ke dalam objek Python, sehingga user tidak perlu menulis query SQL secara langsung. Django akan secara otomatis menerjemahkan operasi pada objek Python ini menjadi query SQL yang sesuai. Hal ini membuat pengelolaan data menjadi lebih mudah dan efisien, sehingga Anda dapat fokus pada pengembangan fitur-fitur inti aplikasi Anda.
