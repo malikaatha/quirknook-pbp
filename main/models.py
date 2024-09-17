@@ -10,3 +10,4 @@ class Product(models.Model):
     @property
     def is_price_expensive(self):
         return self.price > 100000
+    

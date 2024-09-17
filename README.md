@@ -50,6 +50,33 @@ Git memungkinkan pengembang perangkat lunak untuk melacak setiap perubahan yang 
 ## Mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
 Django sering digunakan sebagai permulaan dalam pembelajaran pengembangan perangkat lunak karena mengadopsi arsitektur Model-Template-View (MTV) yang memisahkan logika bisnis, presentasi, dan data, sehingga memudahkan pemahaman konsep dasar pengembangan web. Arsitektur ini membantu pemula memahami bagaimana komponen-komponen aplikasi berinteraksi. Selain itu, Django menyediakan banyak alat bawaan (template) yang memungkinkan pemula yang sedang belajar untuk fokus pada pembelajaran struktur dan alur kerja pengembangan tanpa harus membuat semuanya dari awal.
 
-
 ## Mengapa model pada Django disebut sebagai ORM?
 Model pada Django disebut ORM (Object-Relational Mapper) karena ORM merupakan fitur yang memungkinkan developer untuk berinteraksi dengan database secara intuitif menggunakan sintaks Python. Dengan ORM, user dapat memetakan struktur database ke dalam objek Python, sehingga user tidak perlu menulis query SQL secara langsung. Django akan secara otomatis menerjemahkan operasi pada objek Python ini menjadi query SQL yang sesuai. Hal ini membuat pengelolaan data menjadi lebih mudah dan efisien, sehingga Anda dapat fokus pada pengembangan fitur-fitur inti aplikasi Anda.
+
+
+<br /><br />
+# Tugas 3: Implementasi Form dan Data Delivery pada Django
+
+## Data delivery dalam pengimplementasian sebuah platform?
+Dalam mengimplementasikan platform, data delivery diperlukan untuk memastikan pertukaran informasi antara berbagai komponen sistem/sistem yang berbeda dapat berjalan secara efisien.Dengan menggunakan format seperti HTML, XML, atau JSON, data delivery memungkinkan data diproses dengan cara yang sesuai dengan kebutuhan spesifik aplikasi secara tampilan maupun penyimpanan data.
+
+## Lebih baik XML atau JSON? Mengapa JSON lebih populer?
+Menurut saya, JSON merupakan markup language yang lebih baik daripada XML. Alasan JSON lebih baik daripada XML dan juga merupakan format yang lebih populer adlah karena struktur data JSON yang sederhana dengan menggunakan key-value yang membuatnya lebih efisien dibandingkan XML yang menggunakan tag-tag yang lebih kompleks. Selain itu, JSON cenderung lebih efisien data karena tidak memiliki overhead tag. Karena kepopuleran ini, JSON lebih umum digunakan oleh developer sehingga developer lain juga menggunakan JSON.
+
+##  Fungsi dari `is_valid()` pada form Django?
+Method `is_valid()` pada form Django berfungsi untuk memvalidasi data yang dikirimkan. Method tersebut memastikan bahwa data tersebut memenuhi semua kriteria validasi yang telah ditetapkan dalam form. Jika semua data valid, nilai yang dikembalikan adalah `True` dan jika ada kesalahan, nilai yang dikembalikan adalah `False`. Method ini memungkinkan developer untuk menangani dan menampilkan pesan kesalahan dengan tepat. Penggunaan `is_valid()` penting untuk menjaga keamanan dan konsistensi data serta memisahkan logika validasi dari pemrosesan data lebih lanjut.
+
+## csrf_token
+csrf_token diperlukan di Django untuk melindungi aplikasi web dari serangan Cross-Site Request Forgery (CSRF). Tanpa csrf_token, aplikasi menjadi rentan terhadap serangan di mana penyerang dapat memanfaatkan kredensial user yang sudah login untuk mengirimkan permintaan berbahaya secara tidak sah. Token ini bekerja dengan memastikan bahwa setiap permintaan POST yang diterima berasal dari sumber yang sah dan bukan dari pihak ketiga yang mencoba mengeksploitasi aplikasi. Dengan menyertakan csrf_token dalam form, Django dapat memverifikasi bahwa permintaan tersebut benar-benar berasal dari aplikasi/web yang sama. Hal ini dapat mengurangi risiko tindakan tidak sah serta meningkatkan keamanan aplikasi.
+
+## Cara pengimplementasian checklist secara step-by-step
+### 1. Menambahkan Input Form untuk Menambahkan Objek Model
+- Untuk memungkinkan penambahan objek model ke dalam aplikasi, saya membuat formulir input menggunakan `ModelForm`. Form ini akan memungkinkan user untuk memasukkan data untuk model MoodEntry. Buat berkas `forms.py` di aplikasi Django dan mendefinisikan form dengan atribut yang diperlukan seperti `name`, `price`, dan `description`.<br /> <br />
+- Saya menambahkan fungsi view baru untuk menampilkan formulir ini dan menangani data yang di-submit. Formulir akan ditampilkan pada halaman HTML baru yang saya buat di direktori templates.<br /> <br />
+
+### 2. Menambahkan Empat Fungsi Views untuk Melihat Objek dalam Format XML dan JSON
+- Saya menambahkan dua fungsi view baru. Satu fungsi untuk mengembalikan data objek model Product dalam format JSON dan satu lagi dalam format XML. Fungsi ini akan meng-serialize data objek dan mengirimkannya dalam format yang sesuai.<br /> <br />
+- Saya juga menambahkan dua fungsi view untuk menampilkan objek berdasarkan ID dalam format JSON dan XML. Fungsi ini berfungsi untuk mencari objek dengan ID tertentu dan mengembalikannya dalam format yang sesuai.<br /> <br />
+
+### 3. Menambahkan Routing URL untuk Masing-Masing Views
+- Untuk mengakses fungsi-fungsi view yang telah ditambahkan, saya membuat routing URL baru. Routing ini akan mengarahkan permintaan ke fungsi view yang sesuai berdasarkan path URL. Selain itu, berkas `urls.py` dimodifikasi dengan menambahkan URL baru untuk form input, serta URL untuk melihat data dalam format JSON dan XML baik untuk semua objek maupun berdasarkan ID.
