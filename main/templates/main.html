@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>QUIRKNOOOOK!!</h1>
+<h1>{{aplikasi}}</h1>
 
-<h5>Aflikasi: </h5>
-<p>{{ aplikasi }}<p>
+<h3> Tertiary knick-knack to  satisfy your needs! </h3>
 
-<h5>Name:</h5>
-<p>{{ name }}</p>
-
-<h5>Class:</h5>
-<p>{{ class }}</p>
+<h4> Welcome, {{ name }} from {{class}}!</h4>
 
 {% if not product_entries %}
-<p>Belum ada data quirknook product entry</p>
+<p>Belum ada data {{aplikasi}} product entry</p>
 {% else %}
 <table>
   <tr>
@@ -38,4 +33,10 @@
 <a href="{% url 'main:create_product' %}">
   <button>Add New Product</button>
 </a>
+
+<a href="{% url 'main:logout' %}">
+  <button>Logout</button>
+</a>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 {% endblock content %}
