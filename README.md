@@ -112,3 +112,88 @@ Saya menambahkan relasi **ForeignKey** antara model **Product** dan **User** di 
 
 ### 4. Menampilkan detail pengguna yang login dan menggunakan cookies
 Saya menambahkan cookie untuk menyimpan data `last_login` dan menampilkannya di halaman utama. Di fungsi `login_user`, setelah login berhasil, saya menggunakan `response.set_cookie()` untuk menyimpan `last_login`. Di `show_main`, data `last_login` dari cookie ditampilkan dalam `context`. Pada `logout_user`, saya menghapus cookie `last_login` menggunakan `response.delete_cookie()`. Di `main.html`, saya menambahkan kode untuk menampilkan `last_login` di halaman utama, lalu memeriksa hasilnya melalui browser untuk memastikan cookie disimpan dengan benar.
+
+
+# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+
+## Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+CSS Selectors berfungsi untuk memilih elemen HTML yang akan berlaku dalam Style CSS tersebut. Terdapat 3 selector yaitu Element Selector (tanpa # atau .), Class selector (diawali .), dan ID Selector (diawali #). 
+
+Jika terdapat dua atau lebih aturan yang dipakai dalam satu elemen, selecot dengan specificity tertinggi lah yang akan diterapkan ke elemen tersebut. Berikut merupakan kategori dalam penentuan specificity CSS selector
+
+### Specificity Order:
+1. **Inline Styles** (Specificity: 1000) - Contoh: `<h1 style="color: pink;">`
+2. **ID Selector** (Specificity: 0100) - Contoh: `#navbar`
+3. **Class Selector**, **Pseudo-class**, **Attribute Selector** (Specificity: 0010) - Contoh: `.class, :hover, [href]`
+4. **Element Selector**, **Pseudo-element** (Specificity: 0001) - Contoh: `h1, ::before`
+
+### Cascading Principles:
+1. **Source**: Gaya dari inline > stylesheet eksternal > browser default.
+2. **Specificity**: Selector dengan specificity tertinggi yang diambil.
+3. **Order**: Jika specificity sama, gaya yang ditulis terakhir akan diambil.
+
+### `!important`
+Mengabaikan specificity dan urutan jika digunakan, tetapi harus digunakan dengan bijak.
+
+##  Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+Dalam mengembangkan web atau aplikasi, responsive design merupakan hal yang penting untuk diterapkan untuk mengoptimalkan User Experience. Dengan responsive design, maka saat pengguna menggunakan aplikasi dan memiliki kepentingan untuk me-resize halaman yang dibuka, tidak ada kekacauan dari design yang seharusnya. Elemen-elemen halaman akan menyesuaikan ukurannya secara dinamis sesuai dengan menyesuaikan resolusi perangkat yang digunakan sehingga layout akan ditampilkan secara rapi.
+
+Dari sisi developer, dengan mengembangkan responsive design maka tidak perlu dilakukan pengembangan dan penyesuaian yang terpisah untuk tiap perangkat yang berbeda. Hal ini tentunya meningkatkan efisiensi dalam pengembangan, menghemat waktu, dan menghemat sumber daya lain.
+
+### Aplikasi yang sudah menerapkan responsive design
+- Twitter
+- SCELE
+- Visual Studio Code
+
+### Aplikasi yang belum menerapkan responsive design
+- BCA Mobile
+- Photomath
+
+## Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+## Perbedaan antara Margin, Border, dan Padding
+
+### 1. **Margin**
+- **Margin** adalah ruang di luar elemen HTML, digunakan untuk mengontrol jarak antara elemen dan elemen lainnya.
+- Dapat diatur menggunakan properti seperti `margin-top`, `margin-right`, `margin-bottom`, dan `margin-left`.
+- Contoh:
+    ```
+    margin-top: 5px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    margin-left: 20px; 
+    ```
+
+  ### 2. **Padding**
+- Padding adalah ruang di dalam elemen HTML, antara konten elemen dan batas (border) elemen tersebut.
+- Dapat diatur menggunakan properti seperti `padding-top`, `padding-right`, `padding-bottom`, dan `padding-left`.
+- Contoh:
+    ```
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px; 
+    ```
+
+### 3. **Border**
+- Border adalah garis yang mengelilingi elemen HTML, antara margin dan padding.
+- Bisa diatur menggunakan shorthand border, atau properti terpisah seperti border-width, border-style, dan border-color.
+- Contoh: `border: 2px solid black;`
+
+
+##  Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+- Flexbox (Flexible Box Layout) 
+Adalah model layout satu dimensi yang dirancang untuk mengatur elemen dalam satu baris atau kolom.
+Fungsi:
+    - Membuat layout yang fleksibel dan responsif
+    - Menyusun elemen secara horizontal atau vertikal
+    - Mengatur spacing dan alignment antar elemen dengan mudah
+    - Membuat navigasi, header, footer, atau sidebar
+    - Cocok untuk digunakan pada komponen satu dimensi (baris atau kolom)
+
+- Grid Layout adalah sistem layout dua dimensi yang memungkinkan Anda mengatur elemen dalam baris dan kolom sekaligus.
+Fungsi:
+    - Membuat layout kompleks dengan mudah
+    - Mengatur elemen dalam grid terstruktur
+    - Membuat desain responsif yang konsisten
+    - Cocok untuk layout halaman utuh, galeri, atau dashboard
+    - Cocok untuk digunakan pada komponen satu dimensi (baris dan kolom)
