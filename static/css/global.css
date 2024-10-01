@@ -1,3 +1,6 @@
+/* .body {
+    background: linear-gradient(to bottom, #ffffff, #fff9e6);
+} */
 .form-style form input, form textarea, form select {
     width: 100%;
     padding: 0.5rem;
@@ -17,4 +20,8 @@
     background: linear-gradient(120deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3));
     background-size: 200% 100%;
     animation: shine 3s infinite;
+}
+.gradient-radius {
+    background: linear-gradient(to right, rgb(255, 254, 249), rgb(250, 232, 173));
+    border-radius: 20px; /* Atur radius sesuai kebutuhan */
 }

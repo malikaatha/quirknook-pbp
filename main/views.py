@@ -19,9 +19,9 @@ def show_main(request):
     context = {
         'aplikasi' : 'QuirkNook',
         'name': request.user.username,
-        'class': 'PBP A',
         'product_entries' : product_entries,
         'last_login': request.COOKIES['last_login'],
+        'total_products': (Product.objects.count()-1),
     }
     return render(request, "main.html", context)
 
@@ -109,3 +109,17 @@ def delete_product(request, id):
     product.delete()
     # Kembali ke halaman awal
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def home(request):
+    # Ambil produk milik user yang sedang login
+    products = Product.objects.filter(user=request.user)
+
+    # Hitung total produk
+    product_count = products.count()
+
+    return render(request, 'home.html', {
+        'name': request.user.username,
+        'last_login': request.user.last_login,
+        'product_count': product_count,
+        'product_entries': products
+    })

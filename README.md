@@ -197,3 +197,150 @@ Fungsi:
     - Membuat desain responsif yang konsisten
     - Cocok untuk layout halaman utuh, galeri, atau dashboard
     - Cocok untuk digunakan pada komponen satu dimensi (baris dan kolom)
+
+## Implementasi Checklist
+
+### Langkah 1: Implementasi Fungsi untuk Menghapus dan Mengedit Produk
+
+1. **Membuat View untuk Mengedit dan Menghapus**:
+   - **Edit Produk**:
+    Saya menambahkan view untuk mengedit produk di `views.py` dengan kode sebagai berikut:
+     ```python
+     from django.shortcuts import render, get_object_or_404, redirect
+     from .models import Product
+     from .forms import ProductForm
+
+     def edit_product(request, product_id):
+         product = get_object_or_404(Product, id=product_id)
+         if request.method == 'POST':
+             form = ProductForm(request.POST, instance=product)
+             if form.is_valid():
+                 form.save()
+                 return redirect('main:product_list')  # Ganti dengan nama URL yang sesuai
+         else:
+             form = ProductForm(instance=product)
+         return render(request, 'edit_product.html', {'form': form})
+     ```
+
+   - **Hapus Produk**:
+    Menambahkan view untuk menghapus produk:
+     ```python
+     def delete_product(request, product_id):
+         product = get_object_or_404(Product, id=product_id)
+         product.delete()
+         return redirect('main:product_list')  # Ganti dengan nama URL yang sesuai
+     ```
+
+2. **Menambahkan Form untuk Produk**:
+    Selanjutnya, saya membuat form di `forms.py` dengan kode sebagai berikut:
+     ```python
+     from django import forms
+     from .models import Product
+
+     class ProductForm(forms.ModelForm):
+         class Meta:
+             model = Product
+             fields = ['name', 'description', 'price']
+     ```
+
+3. Menambahkan URL untuk Edit dan Hapus**:
+   - Menghubungkan Views maupun Form yang telah dibuat dengan memodifikasi `urls.py` untuk mendapatkan rute url:
+     ```python
+     from django.urls import path
+     from . import views
+
+     urlpatterns = [
+         path('edit/<int:product_id>/', views.edit_product, name='edit_product'),
+         path('delete/<int:product_id>/', views.delete_product, name='delete_product'),
+     ]
+     ```
+
+### Langkah 2: Kustomisasi Desain pada Template HTML
+
+1. **Menggunakan CSS Framework**:
+   Saya memilih untuk menggunakan framework CSS, yaitu Tailwind CSS, dan menggunakannya di proyek. Kita perlu menambahkannya di `base.html` sebagai link referensi:
+   ```html
+   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+   ```
+
+2. **Kustomisasi Halaman Login dan Register**:
+   Setelah itu mengedit file `login.html` dan `register.html` untuk menambahkan kelas Tailwind agar tampil lebih menarik:
+   ```html
+   <form method="POST" class="max-w-md mx-auto bg-white p-8 rounded shadow-md">
+       {% csrf_token %}
+       <!-- Tambahkan input username dan password -->
+       <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+           Login
+       </button>
+   </form>
+   ```
+
+3. **Kustomisasi Halaman Tambah Produk dan Daftar Produk**:
+   Saya menyesuaikan form untuk tambah produk agar lebih menarik dengan Tailwind CSS. Kustomisasi Halaman Daftar Produk dengan penambahan template `product_list.html` untuk setiap produk.
+
+5. **Menangani Kondisi Jika Tidak Ada Produk**:
+   Saya menambahkan kondisi di `product_list.html` untuk menampilkan gambar dan pesan jika tidak ada produk:
+   ```html
+   {% if not product_entries %}
+       <div class="flex flex-col items-center">
+           <img src="{% static 'image/no_product.png' %}" alt="No Products" class="w-32 h-32 mb-4"/>
+           <p class="text-gray-600">Belum ada produk yang terdaftar.</p>
+       </div>
+   {% endif %}
+   ```
+
+### Langkah 3: Membuat Navbar Responsif
+
+1. **Membuat Navbar dengan Tailwind CSS**:
+   - Saya membuat navbar di `navbar.html` menggunakan kelas responsif:
+   ```html
+   <nav class="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-300 p-4">
+       <div class="max-w-7xl mx-auto flex justify-between items-center">
+           <div class="flex items-center">
+               <img src="{% static 'image/logo.png' %}" alt="Logo" class="h-10 w-10 mr-2">
+               <h1 class="text-2xl font-bold text-white">QuirkNook</h1>
+           </div>
+           <div class="hidden md:flex space-x-4">
+               <a href="{% url 'main:home' %}" class="bg-yellow-500 text-white py-2 px-4 rounded">Home</a>
+               <a href="{% url 'main:user_info' %}" class="bg-yellow-500 text-white py-2 px-4 rounded">User Info</a>
+           </div>
+           <div class="md:hidden flex items-center">
+               <button class="mobile-menu-button">
+                   <svg class="w-6 h-6 text-yellow-400" fill="none" viewBox="0 0 24 24">
+                       <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"></path>
+                   </svg>
+               </button>
+           </div>
+       </div>
+
+       <div class="mobile-menu hidden">
+           <a href="{% url 'main:home' %}" class="block text-center bg-yellow-500 text-white py-2">Home</a>
+           <a href="{% url 'main:user_info' %}" class="block text-center bg-yellow-500 text-white py-2">User Info</a>
+       </div>
+   </nav>
+   ```
+
+2. **Menambahkan Responsivitas untuk Mobile**:
+   - Saya menggunakan JavaScript untuk mengatur tampilan menu mobile saat tombol diklik:
+   ```javascript
+   const btn = document.querySelector("button.mobile-menu-button");
+   const menu = document.querySelector(".mobile-menu");
+
+   btn.addEventListener("click", () => {
+       menu.classList.toggle("hidden");
+   });
+   ```
+
+### Langkah 4: Testing dan Review
+
+1. **Menjalankan Server**:
+   Untuk melakukan pengujian, saya menjalankan server pengembangan Django dan mengakses aplikasi untuk memastikan semua fungsi berjalan dengan baik:
+   ```bash
+   python manage.py runserver
+   ```
+
+2. **Testing Fungsionalitas Program**:
+   - Saya menguji semua fitur seperti login, register, tambah produk, edit, dan hapus produk untuk memastikan semuanya berfungsi dengan baik.
+
+3. **Review Desain**:
+   - Saya memeriksa tampilan pada berbagai ukuran layar untuk memastikan responsivitas, terutama untuk navbar dan card produk.
