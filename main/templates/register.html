@@ -2,27 +2,112 @@
 
 {% block meta %}
 <title>Register</title>
+<style>
+  body {
+    background-color: #faf7f5;
+    font-family: 'Arial', sans-serif;
+  }
+
+  .form-style {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+  }
+
+  input {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ff69b4;
+  }
+
+  .btn-register {
+    background-color: #ff69b4;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-register:hover {
+    background-color: #ff85c1; /* Lighter pink on hover */
+  }
+
+  .message {
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 14px;
+  }
+
+  .message.success {
+    background-color: #d4edda; /* Success message */
+    color: #155724;
+  }
+
+  .message.error {
+    background-color: #f8d7da; /* Error message */
+    color: #721c24;
+  }
+
+  .message.info {
+    background-color: #d1ecf1; /* Info message */
+    color: #0c5460;
+  }
+
+  .register-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #ff69b4;
+  }
+
+  .login-link a {
+    color: #ff69b4;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+</style>
 {% endblock meta %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 form-style">
-    <div>
-      <h2 class="mt-6 text-center text-3xl font-extrabold text-black">
-        Create your account
-      </h2>
-    </div>
-    <form class="mt-8 space-y-6" method="POST">
+<div class="min-h-screen flex items-center justify-center py-12 px-4">
+  <div class="form-style">
+    <h2 class="register-title">Create your account</h2>
+    <form class="space-y-6" method="POST">
       {% csrf_token %}
-      <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
+      <div>
         {% for field in form %}
           <div class="{% if not forloop.first %}mt-4{% endif %}">
-            <label for="{{ field.id_for_label }}" class="mb-2 font-semibold text-black">
+            <label for="{{ field.id_for_label }}" class="mb-2 font-semibold text-gray-700">
               {{ field.label }}
             </label>
             <div class="relative">
-              {{ field }}
+              {{ field }} <!-- Directly render the form field without add_class filter -->
               <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
                 {% if field.errors %}
                   <svg class="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 20 20">
@@ -40,30 +125,22 @@
         {% endfor %}
       </div>
 
-      <div>
-        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
-          Register
-        </button>
-      </div>
+      <button type="submit" class="btn-register">Register</button>
     </form>
 
     {% if messages %}
     <div class="mt-4">
       {% for message in messages %}
-      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <span class="block sm:inline">{{ message }}</span>
+      <div class="message {% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% else %}info{% endif %}" role="alert">
+        <span>{{ message }}</span>
       </div>
       {% endfor %}
     </div>
     {% endif %}
 
-    <div class="text-center mt-4">
-      <p class="text-sm text-black">
-        Already have an account?
-        <a href="{% url 'main:login' %}" class="font-medium text-yellow-200 hover:text-yellow-300">
-          Login here
-        </a>
-      </p>
+    <div class="login-link">
+      Already have an account? 
+      <a href="{% url 'main:login' %}">Login here</a>
     </div>
   </div>
 </div>

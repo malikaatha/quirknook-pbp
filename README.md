@@ -1,9 +1,14 @@
-# Tugas 2: Implementasi Model-View-Template (MVT) pada Django
 Malika Atha Indurasmi <br />
 2306275203 <br />
 PBP A <br />
-### Link to PWS Deployment: http://malika-atha31-quirknook.pbp.cs.ui.ac.id/ <br /> 
-### Link to Repository: https://github.com/malikaatha/quirknook-pbp <br />
+#### Link to PWS Deployment: http://malika-atha31-quirknook.pbp.cs.ui.ac.id/ 
+#### Link to Repository: https://github.com/malikaatha/quirknook-pbp 
+
+
+## Tugas Individu
+
+<details>
+  <summary><b>Tugas 2: Implementasi Model-View-Template (MVT) pada Django</b></summary>
 
 ## Cara pengimplementasian checklist secara step-by-step
 
@@ -53,9 +58,9 @@ Django sering digunakan sebagai permulaan dalam pembelajaran pengembangan perang
 ## Mengapa model pada Django disebut sebagai ORM?
 Model pada Django disebut ORM (Object-Relational Mapper) karena ORM merupakan fitur yang memungkinkan developer untuk berinteraksi dengan database secara intuitif menggunakan sintaks Python. Dengan ORM, user dapat memetakan struktur database ke dalam objek Python, sehingga user tidak perlu menulis query SQL secara langsung. Django akan secara otomatis menerjemahkan operasi pada objek Python ini menjadi query SQL yang sesuai. Hal ini membuat pengelolaan data menjadi lebih mudah dan efisien, sehingga Anda dapat fokus pada pengembangan fitur-fitur inti aplikasi Anda.
 
-
-<br /><br />
-# Tugas 3: Implementasi Form dan Data Delivery pada Django
+</details>
+<details>
+  <summary><b>Tugas 3: Implementasi Form dan Data Delivery pada Django</b></summary>
 
 ## Data delivery dalam pengimplementasian sebuah platform?
 Dalam mengimplementasikan platform, data delivery diperlukan untuk memastikan pertukaran informasi antara berbagai komponen sistem/sistem yang berbeda dapat berjalan secara efisien.Dengan menggunakan format seperti HTML, XML, atau JSON, data delivery memungkinkan data diproses dengan cara yang sesuai dengan kebutuhan spesifik aplikasi secara tampilan maupun penyimpanan data.
@@ -71,7 +76,7 @@ csrf_token diperlukan di Django untuk melindungi aplikasi web dari serangan Cros
 
 ## Cara pengimplementasian checklist secara step-by-step
 ### 1. Menambahkan Input Form untuk Menambahkan Objek Model
-- Untuk memungkinkan penambahan objek model ke dalam aplikasi, saya membuat formulir input menggunakan `ModelForm`. Form ini akan memungkinkan user untuk memasukkan data untuk model MoodEntry. Buat berkas `forms.py` di aplikasi Django dan mendefinisikan form dengan atribut yang diperlukan seperti `name`, `price`, dan `description`.<br /> <br />
+- Untuk memungkinkan penambahan objek model ke dalam aplikasi, saya membuat formulir input menggunakan `ModelForm`. Form ini akan memungkinkan user untuk memasukkan data untuk model productEntry. Buat berkas `forms.py` di aplikasi Django dan mendefinisikan form dengan atribut yang diperlukan seperti `name`, `price`, dan `description`.<br /> <br />
 - Saya menambahkan fungsi view baru untuk menampilkan formulir ini dan menangani data yang di-submit. Formulir akan ditampilkan pada halaman HTML baru yang saya buat di direktori templates.<br /> <br />
 
 ### 2. Menambahkan Empat Fungsi Views untuk Melihat Objek dalam Format XML dan JSON
@@ -81,9 +86,9 @@ csrf_token diperlukan di Django untuk melindungi aplikasi web dari serangan Cros
 ### 3. Menambahkan Routing URL untuk Masing-Masing Views
 - Untuk mengakses fungsi-fungsi view yang telah ditambahkan, saya membuat routing URL baru. Routing ini akan mengarahkan permintaan ke fungsi view yang sesuai berdasarkan path URL. Selain itu, berkas `urls.py` dimodifikasi dengan menambahkan URL baru untuk form input, serta URL untuk melihat data dalam format JSON dan XML baik untuk semua objek maupun berdasarkan ID.
 
-<br /><br />
-
-# Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django
+</details>
+<details>
+  <summary><b>Tugas 4: Implementasi Autentikasi, Session, dan Cookies pada Django</b></summary>
 
 ## Apa perbedaan antara HttpResponseRedirect() dan redirect()?
 - `HttpResponseRedirect()` : Respons HTTP dengan cara secara eksplisit memberikan sebuah url sebagai parameternya. Nantinya, user akan diarahkan ke URL tersebut.
@@ -114,7 +119,9 @@ Saya menambahkan relasi **ForeignKey** antara model **Product** dan **User** di 
 Saya menambahkan cookie untuk menyimpan data `last_login` dan menampilkannya di halaman utama. Di fungsi `login_user`, setelah login berhasil, saya menggunakan `response.set_cookie()` untuk menyimpan `last_login`. Di `show_main`, data `last_login` dari cookie ditampilkan dalam `context`. Pada `logout_user`, saya menghapus cookie `last_login` menggunakan `response.delete_cookie()`. Di `main.html`, saya menambahkan kode untuk menampilkan `last_login` di halaman utama, lalu memeriksa hasilnya melalui browser untuk memastikan cookie disimpan dengan benar.
 
 
-# Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS
+</details>
+<details>
+  <summary><b>Tugas 5: Desain Web menggunakan HTML, CSS dan Framework CSS</b></summary>
 
 ## Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
 CSS Selectors berfungsi untuk memilih elemen HTML yang akan berlaku dalam Style CSS tersebut. Terdapat 3 selector yaitu Element Selector (tanpa # atau .), Class selector (diawali .), dan ID Selector (diawali #). 
@@ -344,3 +351,64 @@ Fungsi:
 
 3. **Review Desain**:
    - Saya memeriksa tampilan pada berbagai ukuran layar untuk memastikan responsivitas, terutama untuk navbar dan card produk.
+
+</details>
+
+<details>
+  <summary><b>Tugas 6: JavaScript dan AJAX</b></summary>
+
+## Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+Javascript digunakan dalm pengembangan web karena menyediakan aksses bagi developer intuk membuat situs yang interaktif. Contohnya adalah fitur seperti form validation, refresh konten secara dinamis, animasi, dan feedback pengguna seperti pop-up, warning, dll. Selain itu, dengan library JS lain seperti React, Angular, dan Vue.js, developer dapat membangun interface yang lebih repsonsif dengan lebih mudah karena adanya framework yang disediakan.
+
+Selain itu, terdapat AJAX (Asynchronous JavaScript and XML) dan Fetch API, yang memungkinkan pengambilan data secara asinkronus. Dengan AJAX, aplikasi web dapat meminta data dari server di tanpa mengganggu interaksi pengguna dengan halaman. 
+
+## Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+Fungsi dari await adalah kata kunci khusus yang digunakan dalam fungsi asinkron (async) untuk "menunggu" hingga sebuah promise selesai sebelum melanjutkan eksekusi kode berikutnya. Saat kita menggunakan await dengan fetch(), kita memastikan bahwa operasi pengambilan data selesai dan respons telah diterima sebelum kode berikutnya dijalankan.
+
+Fungsi await ini akan menunda eksekusi kode berikutnya hingga promise dari fetch() selesai. Jika await tidak digunakan dalam fetch(), maka fungsi asinkron akan berjalan secara synchronous, yaitu langsung mengembalikan promise tanpa menunggu hasilnya. 
+
+## Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+Penggunaan `@csrf_exempt` pada view yang digunakan untuk AJAX POST dalam framework Django diperlukan untuk menonaktifkan pemeriksaan CSRF (Cross-Site Request Forgery) pada permintaan tersebut. CSRF adalah serangan di mana pengguna yang diautentikasi dapat secara tidak sengaja mengirimkan permintaan berbahaya ke server. Django memiliki mekanisme perlindungan CSRF yang memerlukan token khusus dalam setiap permintaan POST, PUT, atau DELETE untuk memastikan keabsahan sumbernya. 
+
+Meskipun menyertakan token CSRF dalam permintaan AJAX sangat dianjurkan, ada situasi di mana hal ini mungkin sulit atau tidak diperlukan, seperti pada API endpoint publik yang tidak sensitif terhadap serangan CSRF. Dalam kasus tersebut, penggunaan `@csrf_exempt` memungkinkan permintaan AJAX POST dilakukan tanpa perlu menyertakan token CSRF, meskipun penggunaannya harus dilakukan dengan hati-hati karena dapat membuka celah keamanan. Sebaiknya, jika memungkinkan, menyertakan CSRF token dalam permintaan AJAX lebih baik daripada menonaktifkan perlindungan CSRF.
+
+##  Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+- Dari segi keamanan, jika hanya menerapkan pembersihan di frontend, maka web akan dengan mudah dimanipulasi oleh pengguna. Hacker akan dengan mudah melewatkan validasi dengan mengirim permintaan langsung ke server.
+- Dengan mengimplementasikan pembersihan data ke backend, maka kita dapat menjamin bahwa semua data yang masuk ke sistem sudah dibersihkan, terlepas dari sumber datanya.
+- Terdapat kemungkinan adanya validasi yang lebih kompleks dan menjamin yang hanya dapat terimplementasikan di backend.
+- Memindahkan sebagian validasi ke server dapat mengurangi beban pada perangkat klien, terutama untuk perangkat dengan sumber daya terbatas.
+
+## Implementasi checklist
+### Membuat Fungsi untuk menambahkan Product dengan AJAX
+1. Menambahkan `import csrf_exempt` dan `import require_POST`
+2. Membuat fungsi `add_product_ajax` yang nantinya akan digunakan untuk menambah produk baru dengan menggunakan AJAX.
+
+### Menambahkan Routing Untuk Fungsi `add_product_ajax`
+1. Mengimpor fungsi `add_product_ajax` yang telah dibuat pada checklist sebelumnya.
+2. Menambahkan path baru dalam list urlpatterns:
+    `[..., path('create--entry-ajax', , name=''),...]`
+
+### Menampilkan Data Product dengan fetch() API
+1. Untuk tutorial ini, kita akan mengam bil data product dari endpoint /json sehingga kita tidak memerlukan lagi product_entries.
+2. Pada berkas views.py, saya menghapus baaris pertama pada show_json dan juga product_entries pada show_main.
+3. Pada berkas main.html, saya menghapus blok code yang awalnya ditujukan untuk mengiterasi products di dalam product_entries.
+4. Block code pada oin 3 diganti dengan `<div id="product_cards"></div>`.
+5. Menambahkan block script sebelum endblock content:
+   ```<script>
+    async function getProductEntries(){
+    return fetch("{% url 'main:show_json' %}").then((res) => res.json())
+    }
+    </script>
+    ```
+   Nantinya, fungsi ini akan menggunakan fetch() API dan parse data JSON menjadi objeck JavaScript.
+6. Tambahkan fungsi `refreshProductEntires()` di dalam tag <script> sebelum menutup </body> di berkas main.html.
+
+### Implementasi Modal untuk Menambahkan Product
+1. Menambahkan Modal di bawah elemen dengan ID product_cards di berkas main/templates/main.html.
+2. Membuat fungsi untuk menampilkan dan menyembunyikan modal, serta menambahkan event listener untuk tombol close dan cancel.
+3. Mengubah tombol "Add New Products" dan mengganti dengan tombol baru yang akan menjalankan modal untuk menambah product dengan AJAX.
+
+### Menambahkan Data Mood dengan AJAX
+1. Fungsi untuk Mengirim Data: Buat fungsi JavaScript yang mengirim data dari form modal menggunakan AJAX ke server.
+2. Event Listener: Tambahkan event listener pada form di dalam modal untuk memanggil fungsi yang telah dibuat ketika form disubmit.
+

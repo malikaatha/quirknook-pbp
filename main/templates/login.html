@@ -4,92 +4,125 @@
 <title>Login</title>
 <style>
   body {
-    background-color: #f0f0f0; 
+    background-color: #e4dbea; /* Softer background */
+    font-family: 'Helvetica', sans-serif; /* Clean and modern font */
   }
+  
   .login-container {
-    background-color: #ffcc00; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* White background for a clean look */
+    border-radius: 20px; /* Rounded corners */
+    padding: 30px; /* Spacious padding */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    max-width: 400px;
+    margin: auto;
   }
+  
   .input-field {
-    background-color: #ffffff; 
-    border: 2px solid #ff5733; 
+    background-color: #f0f0f0; /* Light input background */
+    border: none; /* No border */
+    border-radius: 10px; /* Rounded input fields */
+    padding: 12px; /* Padding for input fields */
+    margin-bottom: 15px; /* Space between input fields */
+    width: 100%;
   }
+  
   .input-field:focus {
-    border-color: #c70039; 
-    outline: none;
+    outline: none; /* Remove outline */
+    box-shadow: 0 0 0 2px #ff69b4; /* Soft pink border on focus */
   }
+  
   .btn-signin {
-    background-color: #007bff;
-  }
-  .btn-signin:hover {
-    background-color: #0056b3;
-  }
-  .message {
-    border-radius: 5px;
+    background-color: #ff69b4; /* Pink button */
+    color: white;
+    border-radius: 20px; /* Rounded button */
     padding: 10px;
-    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
   }
+  
+  .btn-signin:hover {
+    background-color: #ff85c1; /* Lighter pink on hover */
+  }
+  
+  .message {
+    border-radius: 10px;
+    padding: 15px;
+    margin: 15px 0;
+    font-size: 14px;
+  }
+  
   .message.success {
-    background-color: #28a745; 
-    color: white;
+    background-color: #d4edda; /* Success message */
+    color: #155724;
   }
+  
   .message.error {
-    background-color: #dc3545; 
-    color: white;
+    background-color: #f8d7da; /* Error message */
+    color: #721c24;
   }
+  
   .message.info {
-    background-color: #007bff; 
-    color: white;
+    background-color: #d1ecf1; /* Info message */
+    color: #0c5460;
+  }
+  
+  .login-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .register-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #68a033;
+  }
+  
+  .register-link a {
+    color: #558122;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .register-link a:hover {
+    text-decoration: underline;
   }
 </style>
 {% endblock meta %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center w-screen py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 login-container p-8">
-    <div>
-      <h2 class="mt-6 text-center text-black text-3xl font-extrabold">
-        Login to your account
-      </h2>
-    </div>
-    <form class="mt-8 space-y-6" method="POST" action="">
+<div class="min-h-screen flex items-center justify-center w-screen py-12 px-4">
+  <div class="login-container">
+    <h2 class="login-title">Login to your account</h2>
+    <form method="POST" action="">
       {% csrf_token %}
-      <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
-        <div>
-          <label for="username" class="sr-only">Username</label>
-          <input id="username" name="username" type="text" required class="input-field appearance-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-t-md sm:text-sm" placeholder="Username">
-        </div>
-        <div>
-          <label for="password" class="sr-only">Password</label>
-          <input id="password" name="password" type="password" required class="input-field appearance-none relative block w-full px-3 py-2 placeholder-gray-500 text-gray-900 rounded-b-md sm:text-sm" placeholder="Password">
-        </div>
+      <div>
+        <input id="username" name="username" type="text" required class="input-field" placeholder="Username">
+      </div>
+      <div>
+        <input id="password" name="password" type="password" required class="input-field" placeholder="Password">
       </div>
 
-      <div>
-        <button type="submit" class="btn-signin group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2">
-          Sign in
-        </button>
-      </div>
+      <button type="submit" class="btn-signin">Sign in</button>
     </form>
 
     {% if messages %}
     <div class="mt-4">
       {% for message in messages %}
         <div class="message {% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% else %}info{% endif %}" role="alert">
-            <span class="block sm:inline">{{ message }}</span>
+            <span>{{ message }}</span>
         </div>
       {% endfor %}
     </div>
     {% endif %}
 
-    <div class="text-center mt-4">
-      <p class="text-sm text-black">
-        Don't have an account yet?
-        <a href="{% url 'main:register' %}" class="font-medium text-red-600 hover:text-red-500">
-          Register Now
-        </a>
-      </p>
+    <div class="register-link">
+      Don't have an account yet? 
+      <a href="{% url 'main:register' %}">Register Now</a>
     </div>
   </div>
 </div>
