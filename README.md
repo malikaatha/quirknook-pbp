@@ -386,13 +386,13 @@ Meskipun menyertakan token CSRF dalam permintaan AJAX sangat dianjurkan, ada sit
 ### Menambahkan Routing Untuk Fungsi `add_product_ajax`
 1. Mengimpor fungsi `add_product_ajax` yang telah dibuat pada checklist sebelumnya.
 2. Menambahkan path baru dalam list urlpatterns:
-    `[..., path('create--entry-ajax', , name=''),...]`
+    `[..., path('create-product-ajax', , name=''),...]`
 
 ### Menampilkan Data Product dengan fetch() API
-1. Untuk tutorial ini, kita akan mengam bil data product dari endpoint /json sehingga kita tidak memerlukan lagi product_entries.
-2. Pada berkas views.py, saya menghapus baaris pertama pada show_json dan juga product_entries pada show_main.
+1. Untuk tutorial ini, kita akan mengambil data product dari endpoint /json sehingga kita tidak memerlukan lagi product_entries.
+2. Pada berkas views.py, saya menghapus baris pertama pada show_json dan juga product_entries pada show_main.
 3. Pada berkas main.html, saya menghapus blok code yang awalnya ditujukan untuk mengiterasi products di dalam product_entries.
-4. Block code pada oin 3 diganti dengan `<div id="product_cards"></div>`.
+4. Block code pada poin 3 diganti dengan `<div id="product_cards"></div>`.
 5. Menambahkan block script sebelum endblock content:
    ```<script>
     async function getProductEntries(){
@@ -400,8 +400,8 @@ Meskipun menyertakan token CSRF dalam permintaan AJAX sangat dianjurkan, ada sit
     }
     </script>
     ```
-   Nantinya, fungsi ini akan menggunakan fetch() API dan parse data JSON menjadi objeck JavaScript.
-6. Tambahkan fungsi `refreshProductEntires()` di dalam tag <script> sebelum menutup </body> di berkas main.html.
+   Nantinya, fungsi ini akan menggunakan fetch() API dan parse data JSON menjadi object JavaScript.
+6. Tambahkan fungsi `refreshProductEntires()` di dalam tag `<script>` sebelum menutup `</body>` di berkas main.html.
 
 ### Implementasi Modal untuk Menambahkan Product
 1. Menambahkan Modal di bawah elemen dengan ID product_cards di berkas main/templates/main.html.
@@ -409,6 +409,6 @@ Meskipun menyertakan token CSRF dalam permintaan AJAX sangat dianjurkan, ada sit
 3. Mengubah tombol "Add New Products" dan mengganti dengan tombol baru yang akan menjalankan modal untuk menambah product dengan AJAX.
 
 ### Menambahkan Data Mood dengan AJAX
-1. Fungsi untuk Mengirim Data: Buat fungsi JavaScript yang mengirim data dari form modal menggunakan AJAX ke server.
-2. Event Listener: Tambahkan event listener pada form di dalam modal untuk memanggil fungsi yang telah dibuat ketika form disubmit.
+1. Membuat fungsi JavaScript yang mengirim data dari form modal menggunakan AJAX ke server.
+2. Menambahkan event listener pada form di dalam modal untuk memanggil fungsi yang telah dibuat ketika form disubmit.
 
