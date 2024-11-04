@@ -122,8 +122,7 @@ def home(request):
 @csrf_exempt
 @require_POST
 def add_product_ajax(request):
-    name = strip_tags(request.POST.get("name")) # strip HTML tags!
-    description = strip_tags(request.POST.get("description")) # strip HTML tags!
+    description = strip_tags(request.POST.get("description")) 
 
     name = request.POST.get("name")
     description = request.POST.get("description")
@@ -138,3 +137,4 @@ def add_product_ajax(request):
     new_product.save()
 
     return HttpResponse(b"CREATED", status=201)
+    name = strip_tags(request.POST.get("name")) 
